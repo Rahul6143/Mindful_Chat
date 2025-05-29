@@ -29,7 +29,7 @@
 
 ### 💻 Frontend
 
-* React ⚛️
+* ReactJS ⚛️
 * Vite ⚡
 * TailwindCSS 🎨
 * React Speech Recognition 🎤
