@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles for light and dark mode */
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200;
+  }
+}
+
 /* You can add your custom styles below if needed */
 
 @keyframes fade-in {

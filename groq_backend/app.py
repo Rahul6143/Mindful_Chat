@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 from agent import MentalHealthAgent
@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../frontend/dist',static_url_path='/')
     CORS(app)
     
     # Initialize components
@@ -36,6 +36,10 @@ def create_app():
         logger.error(f"Failed to initialize application: {str(e)}")
         raise
 
+    @app.route('/')
+    def home():
+        return send_from_directory(app.static_folder, 'index.html')
+    
     # User Authentication Endpoints
     @app.route('/api/register', methods=['POST'])
     def register():
@@ -155,6 +159,8 @@ def create_app():
         return jsonify({"status": "healthy"})
 
     return app
+
+    
 
 app = create_app()
 

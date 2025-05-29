@@ -27,31 +27,31 @@ export default function BlogSection() {
   // Get color based on category for card accents
   const getCategoryColor = (category) => {
     const colors = {
-      anxiety: 'bg-blue-100 text-blue-800',
-      mindfulness: 'bg-green-100 text-green-800',
-      stress: 'bg-orange-100 text-orange-800',
-      relationships: 'bg-purple-100 text-purple-800',
-      depression: 'bg-red-100 text-red-800',
-      resilience: 'bg-yellow-100 text-yellow-800',
-      'seasonal-affective-disorder': 'bg-indigo-100 text-indigo-800',
-      wellness: 'bg-teal-100 text-teal-800'
+      anxiety: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+      mindfulness: 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
+      stress: 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
+      relationships: 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
+      depression: 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200',
+      resilience: 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',
+      'seasonal-affective-disorder': 'bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200',
+      wellness: 'bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200'
     };
     
-    return colors[category] || 'bg-gray-100 text-gray-800';
+    return colors[category] || 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200';
   };
 
   return (
-    <section id="blog" className="py-20 bg-gray-50">
+    <section id="blog" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Mental Health Resources</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div className="text-center mb-12 fade-in-section opacity-0">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Mental Health Resources</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Explore our collection of articles written by mental health professionals to support your well-being.
           </p>
         </div>
         
         {/* Filter tabs - scrollable on mobile */}
-        <div className="mb-12 overflow-x-auto pb-2">
+        <div className="mb-12 overflow-x-auto pb-2 fade-in-section opacity-0">
           <div className="flex space-x-2 min-w-max px-4">
             {categories.slice(0, 8).map(category => (
               <button
@@ -59,8 +59,8 @@ export default function BlogSection() {
                 onClick={() => setActiveTab(category)}
                 className={`px-6 py-2 rounded-full transition-all duration-200 whitespace-nowrap ${
                   activeTab === category 
-                    ? 'bg-indigo-600 text-white shadow-md' 
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                    ? 'bg-indigo-600 dark:bg-indigo-500 text-white shadow-md' 
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200'
                 }`}
               >
                 {formatCategoryName(category)}
@@ -72,32 +72,34 @@ export default function BlogSection() {
         {/* Blog cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBlogs.slice(0, 4).map(blog => (
-            <div key={blog.id} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col h-full">
-              {/* Category label at top of card */}
-              <div className="pt-4 px-6">
-                <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${getCategoryColor(blog.category)}`}>
+            <div 
+              key={blog.id}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 overflow-hidden fade-in-section opacity-0"
+            >
+              <div className="p-6">
+                <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${getCategoryColor(blog.category)}`}>
                   {formatCategoryName(blog.category)}
                 </span>
-              </div>
-              
-              <div className="px-6 pb-6 flex-1 flex flex-col">
-                <div className="flex-1">
-                  <div className="flex justify-between items-center mb-2 mt-3">
-                    <span className="text-xs text-gray-500">{blog.date}</span>
-                  </div>
-                  <h3 className="font-semibold text-lg mb-3 text-gray-900 line-clamp-2">{blog.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{blog.excerpt}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  {blog.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {blog.excerpt}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {blog.date}
+                  </span>
+                  <a
+                    href={blog.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-600 dark:text-indigo-400 font-medium inline-flex items-center hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+                  >
+                    Read more
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
                 </div>
-                
-                <a 
-                  href={blog.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-indigo-600 font-medium inline-flex items-center hover:text-indigo-800 mt-2 group"
-                >
-                  Read more
-                  <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
               </div>
             </div>
           ))}

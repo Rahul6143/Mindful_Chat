@@ -1,47 +1,48 @@
 import about from '../../assets/about.jpg';
 
-export default function AboutSection() {
+export default function AboutUs() {
   return (
-    <section id="about" className="py-24 bg-gradient-to-br bg-gradient-to-br from-indigo-100 via-blue-100 to-indigo-200">
+    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          
-          {/* Left Image */}
-          <div className="lg:w-1/2 fade-in-section opacity-0">
-            <img
-              src={about}
-              alt="Mental health illustration"
-              className="rounded-3xl w-full h-auto max-w-[520px] shadow-2xl transform transition-transform duration-300 hover:scale-105"
-            />
+        <div className="text-center mb-16 fade-in-section opacity-0">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">About MindfulChat</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            We're on a mission to make mental health support accessible to everyone, anytime.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="fade-in-section opacity-0">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Our Story</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              MindfulChat was born from a simple idea: everyone deserves access to compassionate mental health support. 
+              We combine cutting-edge AI technology with evidence-based therapeutic approaches to create a safe, 
+              supportive space for your mental well-being journey.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300">
+              Our team of mental health professionals and AI experts work together to ensure that every interaction 
+              with MindfulChat is helpful, empathetic, and grounded in best practices.
+            </p>
           </div>
-
-          {/* Right Content */}
-          <div className="lg:w-1/2 fade-in-section opacity-0">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-  About <span className="text-indigo-600">MindfulChat</span>
-</h2>
-<p className="text-lg text-gray-700 mb-5">
-  MindfulChat is our Major Project, built to bridge the gap between mental health and technology. We've created a space where anyone can feel heard, supported, and empowered to navigate life’s challenges.
-</p>
-<p className="text-lg text-gray-700 mb-8">
-  While we're not licensed professionals, every line of code is written with empathy, thoughtful research, and an open heart. MindfulChat is a work in progress—just like all of us—and we’re committed to growing, learning, and improving one meaningful conversation at a time.
-</p>
-
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { title: "2", subtitle: "Students" },
-                { title: "100%", subtitle: "Built with Passion" },
-                { title: "Open", subtitle: "To Feedback" },
-                { title: "Always", subtitle: "Improving" }
-              ].map((item, i) => (
-                <div key={i} className="bg-white p-6 rounded-2xl shadow-lg text-center hover:shadow-xl transition-shadow">
-                  <p className="text-4xl font-bold text-indigo-600">{item.title}</p>
-                  <p className="text-gray-600 mt-1">{item.subtitle}</p>
-                </div>
-              ))}
+          
+          <div className="grid grid-cols-2 gap-4 fade-in-section opacity-0">
+            <div className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow text-center">
+              <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">98%</p>
+              <p className="text-gray-600 dark:text-gray-300">User satisfaction</p>
+            </div>
+            <div className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow text-center">
+              <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">250k+</p>
+              <p className="text-gray-600 dark:text-gray-300">Active users</p>
+            </div>
+            <div className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow text-center">
+              <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">12+</p>
+              <p className="text-gray-600 dark:text-gray-300">Mental health experts</p>
+            </div>
+            <div className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow text-center">
+              <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">24/7</p>
+              <p className="text-gray-600 dark:text-gray-300">Support availability</p>
             </div>
           </div>
-          
         </div>
       </div>
     </section>
